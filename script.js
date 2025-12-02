@@ -16,8 +16,10 @@ iStar.className = "fa-solid fa-star";
 document.querySelector(".date__of__birth").prepend(iStar);
 document.querySelector(".date__of__birth").appendChild(iStar.cloneNode(true));
 
-function showLetterImmediately() {
-    $(".box__letter, .letter__border").show();
+function showLetter() {
+    $(".box__letter").slideDown();
+    $(".letter__border").slideDown();
+
     if (title__letter) {
         title__letter.textContent = "";
         for (let char of titleLetter) {
@@ -27,21 +29,24 @@ function showLetterImmediately() {
             title__letter.appendChild(heart);
         }
     }
+
     if (text__letter) {
         text__letter.textContent = datatxtletter;
     }
 
-    document.querySelectorAll(".heart").forEach(item => item.classList.add("animation"));
+    document.querySelectorAll(".heart").forEach((item) => item.classList.add("animation"));
     document.querySelectorAll("#heart__letter, .love__img, #mewmew").forEach(el => el?.classList.add("animationOp"));
 }
 
-window.addEventListener('DOMContentLoaded', showLetterImmediately);
+window.addEventListener('DOMContentLoaded', showLetter);
 
 closeBtn.addEventListener('click', function () {
     if (text__letter) text__letter.textContent = "";
     if (title__letter) title__letter.textContent = "";
-    $(".box__letter, .letter__border").hide();
-    document.querySelectorAll(".heart").forEach(item => item.classList.remove("animation"));
+    $(".box__letter").slideUp();
+    $(".letter__border").slideUp();
+
+    document.querySelectorAll(".heart").forEach((item) => item.classList.remove("animation"));
     document.querySelectorAll("#heart__letter, .love__img, #mewmew").forEach(el => el?.classList.remove("animationOp"));
 });
 
